@@ -33,6 +33,7 @@ Page elements are given enough time to load before WebDriver acts on them.
 Code becomes greatly simplified and easier to maintain."""
 
 import codecs
+import warnings
 import fasteners
 import json
 import logging
@@ -3905,7 +3906,8 @@ class BaseCase(unittest.TestCase):
         use_grid = False
         if servername != "localhost":
             # Use Selenium Grid (Use "127.0.0.1" for localhost Grid)
-            use_grid = True
+            warnings.warn("CUSTOM PATCH ACTIVATED: not using Selenium Grid.")
+            use_grid = False
         proxy_string = proxy
         if proxy_string is None:
             proxy_string = self.proxy_string
